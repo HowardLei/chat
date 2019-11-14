@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户端</title>
+    <script src="js/client.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="css/client.css" />
+</head>
+
+<body>
+    <input type="text" name="username" id="username" placeholder="请输入用户名" />
+    <input type="button" name="connect" onclick="online()" value="上线" />
+    <input type="button" name="disconnect" onclick="offline()" value="下线" />
+    <div class="chatSpace">
+        <div id="output"></div>
+        <input type="text" id="sendMessage" placeholder="待发信息" />
+        <input id="send" type="button" onclick="send()" value="发送" />
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    width: 800px;
+    alignment: center;
+}
+input#username {
+    margin-left: 15px;
+}
+div#output {
+    border: 1px solid #ccc;
+    height: 365px;
+    overflow: auto;
+    margin-left: 15px;
+    display: block;
+}
+input#sendMessage {
+    margin-left: 15px;
+}
