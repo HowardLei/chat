@@ -111,6 +111,7 @@ function writeToTextArea(message) {
     let outputView = document.getElementById("output")
     outputView.append(divElement)
     let view = outputView.getElementsByClassName("newMessage")[0]
+    // FIXME: 2019/11/15 当消息填充完整整个窗口的时候，无法自动显示到最新的一条数据。
     let viewScroll = (view.scrollTop === view.scrollHeight - view.clientHeight)
     if (viewScroll) {
         view.scrollTop = view.scrollHeight - view.clientHeight
