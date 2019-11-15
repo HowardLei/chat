@@ -91,7 +91,7 @@ function initSocket(username) {
         }
         let sender = strings[0].split("[")[1].split("]")[0]
         if (sender === username) {
-            writeToTextArea("<span style='color: #66e; font-size: 12px'>"+formatDate(new Date())+"</span>")
+            writeToTextArea("<span style='color: #66e; font-size: 12px;'>" + formatDate(new Date()) + "</span>")
             writeToTextArea("<span style='color: #66e'>" + username + ":" + message + "</span>")
         }
     }
