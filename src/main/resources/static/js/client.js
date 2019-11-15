@@ -26,7 +26,7 @@ function offline() {
     if (webSocket.readyState === WebSocket.OPEN) {
         webSocket.close()
     } else {
-        alert("对不起，没有socket端口进行连接。")
+        alert("对不起，该 socket 端口不可用，请重新尝试。")
         return false
     }
 }
@@ -78,8 +78,10 @@ function initSocket(username) {
     }
     webSocket.onclose = function (event) {
         // alert("关闭连接")
+        writeToTextArea("<span style='color: red'>" + username + "已下线" + "</span>")
         webSocket.close()
     }
+    // FIXME: 2019/11/15 该方法现在无法接受别的用户登录的请求。
     webSocket.onmessage = function (event) {
         // alert("消息发送成功")
         // 接收到的消息 event.data
