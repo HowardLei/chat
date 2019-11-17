@@ -94,10 +94,10 @@ function initSocket(username) {
         let sender = strings[0].split("[")[1].split("]")[0]
         if (sender === username) {
             writeToTextArea("<span style='color: #66e; font-size: 12px;'>" + formatDate(new Date()) + "</span>")
-            writeToTextArea("<span style='color: #66e'>" + username + ":" + message + "</span>")
+            writeToTextArea("<span style='color: #66e'>" + "我:" + message + "</span>")
         } else {
-            writeToTextArea("<span style='color: #666; font-size: 12px;'>" + formatDate(new Date()) + "</span>")
-            writeToTextArea("<span style='color: #666'>" + sender + ":" + message + "</span>")
+            writeToTextArea("<span style='color: purple; font-size: 12px;'>" + formatDate(new Date()) + "</span>")
+            writeToTextArea("<span style='color: purple'>" + sender + ":" + message + "</span>")
         }
     }
     webSocket.onerror = function () {
