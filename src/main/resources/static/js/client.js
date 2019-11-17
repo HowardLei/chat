@@ -88,13 +88,16 @@ function initSocket(username) {
         let strings = event.data.split(":")
         let message = strings[1]
         // 当收到添加新用户的时候，由于其中发送到前端的消息没有 ':'，所以应该是 undefined
-        if (typeof message == "undefined") {
+        if (message === undefined) {
             return
         }
         let sender = strings[0].split("[")[1].split("]")[0]
         if (sender === username) {
             writeToTextArea("<span style='color: #66e; font-size: 12px;'>" + formatDate(new Date()) + "</span>")
             writeToTextArea("<span style='color: #66e'>" + username + ":" + message + "</span>")
+        } else {
+            writeToTextArea("<span style='color: #666; font-size: 12px;'>" + formatDate(new Date()) + "</span>")
+            writeToTextArea("<span style='color: #666'>" + sender + ":" + message + "</span>")
         }
     }
     webSocket.onerror = function () {
@@ -112,11 +115,17 @@ function writeToTextArea(message) {
     divElement.innerHTML = message
     let outputView = document.getElementById("output")
     outputView.append(divElement)
-    let view = outputView.getElementsByClassName("newMessage")[0]
+    let views = outputView.getElementsByClassName("newMessage")
+    let view = views[views.length - 1]
     // FIXME: 2019/11/15 当消息数量超过规定区域的时候，无法自动滚动到最新的一条数据。
-    let viewScroll = (view.scrollTop === view.scrollHeight - view.clientHeight)
+    // 获得最底下 div 的偏移量
+    let top = view.offsetTop
+    // 判断什么时候进行滚动
+    let viewScroll = (top >= outputView.clientHeight)
+    console.log("view.offsetTop = " + top)
+    console.log(outputView.clientHeight)
+    // 当超出 div 的下边框的时候，将消息自动滚动到最新的消息
     if (viewScroll) {
-        view.scrollTop = view.scrollHeight - view.clientHeight
     }
 }
 
