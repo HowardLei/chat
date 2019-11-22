@@ -6,14 +6,7 @@ webSocket = null
  */
 function online() {
     // 获得 IP 地址
-    // let ipAddress = document.getElementById("ipAddress").value
     let username = document.getElementById("username").value
-    // 判断 IP 地址是否合法
-    // if (!ipAddress.match("^((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})(\\.((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})){3}$") || ipAddress == '') {
-    //     alert("对不起，IP地址输入有误，请检查后重新输入。")
-    //     ipAddress = null
-    //     return false
-    // }
     checkWebSocket(username)
     return true
 }
@@ -122,8 +115,8 @@ function writeToTextArea(message) {
     let top = view.offsetTop
     // 判断什么时候进行滚动
     let viewScroll = (top >= outputView.clientHeight)
-    console.log("view.offsetTop = " + top)
-    console.log(outputView.clientHeight)
+    // console.log("view.offsetTop = " + top)
+    // console.log(outputView.clientHeight)
     // 当超出 div 的下边框的时候，将消息自动滚动到最新的消息
     if (viewScroll) {
     }
@@ -141,4 +134,10 @@ function formatDate(formatDate) {
     let minute = formatDate.getMinutes()
     let second = formatDate.getSeconds()
     return year + "-" + (month = month < 10 ? ("0" + month) : month) + "-" + (date = date < 10 ? ("0" + date) : date) + " " + (hour = hour < 10 ? ("0" + hour) : hour) + ":" + (minute = minute < 10 ? ("0" + minute) : minute) + ":" + (second = second < 10 ? ("0" + second) : second)
+}
+
+window.onload = () => {
+    let outputDiv = document.getElementById("output")
+    outputDiv.addEventListener("scroll", evt => {
+    })
 }
