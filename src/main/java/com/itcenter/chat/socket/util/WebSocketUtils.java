@@ -1,5 +1,8 @@
 package com.itcenter.chat.socket.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import javax.websocket.Session;
 import java.util.Map;
 import java.util.Optional;
@@ -11,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author apple
  * @date 2019/11/9
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class WebSocketUtils {
 
     /**
@@ -26,13 +30,6 @@ public class WebSocketUtils {
     static {
         CONNECTIONS = 5;
         ONLINE_SESSION = new ConcurrentHashMap<>(CONNECTIONS);
-    }
-
-    /**
-     * 工具类别忘了将构造方法私有化
-     */
-    private WebSocketUtils() {
-
     }
 
     /**
@@ -73,9 +70,6 @@ public class WebSocketUtils {
      * @param message 发送的会话信息
      */
     public static void sendMessageForAll(String message) {
-        ONLINE_SESSION.entrySet().forEach((Map.Entry<String, Session> sessionEntry) -> {
-            var session = sessionEntry.getValue();
-            sendMessage(session, message);
-        });
+        ONLINE_SESSION.forEach((key, session) -> sendMessage(session, message));
     }
 }

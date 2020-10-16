@@ -19,6 +19,7 @@ import java.io.IOException;
 @ServerEndpoint("/myChat/{userNickname}")
 @Slf4j
 public class WebSocketController {
+
     /**
      * 当需要通过 socket 通信的时候，执行该方法。
      * @param userNickName 用户名
