@@ -5,8 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 
 import javax.websocket.*;
-import javax.websocket.server.PathParam;
-import javax.websocket.server.ServerEndpoint;
+import javax.websocket.server.*;
 import java.io.IOException;
 
 /**
@@ -69,8 +68,8 @@ public class WebSocketController {
         try {
             session.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
-        throwable.printStackTrace();
+        log.error(throwable.getMessage());
     }
 }

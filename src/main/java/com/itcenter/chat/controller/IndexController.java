@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class IndexController {
+
     /**
      * 配置初始化哪个页面
      * @return 需要配置网页的 html 值
